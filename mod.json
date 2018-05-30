@@ -10,6 +10,7 @@
     
     "Settings": {
         "OverheatChance": 10,
-        "ShutdownHeatChance": 20
+        "ShutdownHeatChance": 20,
+        "UseHBSMercySetting": true
     }
 }
