@@ -1,0 +1,15 @@
+{
+    "Name": "AmmoCookOff",
+
+    "Version": "0.1.0",
+    "Description": "Adds basic panic system, based on mpstark's Punchin' Out.",
+    "Author": "RealityMachina",
+    "Website": "https://github.com/RealityMachina/AmmoCookOff",
+
+    "DLL": "AmmoCookOff.dll",
+    
+    "Settings": {
+        "OverheatChance": 10,
+        "ShutdownHeatChance": 20
+    }
+}
