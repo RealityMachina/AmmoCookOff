@@ -35,6 +35,7 @@ namespace AmmoCookOff
         {
             public float OverheatChance = 10;
             public float ShutdownHeatChance = 25;
+            public bool UseHBSMercySetting = true;
         }
 
 
@@ -54,10 +55,17 @@ namespace AmmoCookOff
 
                         if (ammoBox != null)
                         {
+                            int value = ammoBox.StatCollection.GetValue<int>("CurrentAmmo");
+                            int capacity = ammoBox.ammunitionBoxDef.Capacity;
+                            float num = value / (float)capacity;
+                            if (num < 0.5f && Settings.UseHBSMercySetting)
+                            {
+                                return;
+                            }
                             var rng = (new System.Random()).Next(100);
                             var rollToBeat = __instance.IsShutDown ? Settings.ShutdownHeatChance : Settings.OverheatChance; //if shut down, we use the Shutdown chance. Otherwise, the normal overheat chance.
 
-
+                            
                             if (rng < rollToBeat) //things are exploding captain!
                             {
                                 if (__instance.Combat.Constants.PilotingConstants.InjuryFromAmmoExplosion)
