@@ -42,7 +42,7 @@ namespace AmmoCookOff
         [HarmonyPatch(typeof(Mech), "CheckForHeatDamage")]
         public static class Mech_CheckHeatDamage_Patch
         {
-            public static void Postfix(Mech __instance, int stackID)
+            public static void Postfix(Mech __instance, int stackID, string attackerID)
             {
                 if (__instance.IsDead || (__instance.IsFlaggedForDeath && __instance.HasHandledDeath) || !__instance.IsOverheated && !__instance.IsShutDown)
                     return; //don't bother if they're dead or not overheating
@@ -81,11 +81,11 @@ namespace AmmoCookOff
                                 //we make a fake hit info to apply the nuking
                                 WeaponHitInfo hitInfo = new WeaponHitInfo(stackID, -1, -1, -1, string.Empty, string.Empty, -1, null, null, null, null, null, null, null, AttackDirection.None, Vector2.zero, null);
                                 Vector3 onUnitSphere = UnityEngine.Random.onUnitSphere;
-                                __instance.NukeStructureLocation(hitInfo, ammoBox.Location, (ChassisLocations)ammoBox.Location, onUnitSphere, true);
+                                __instance.NukeStructureLocation(hitInfo, ammoBox.Location, (ChassisLocations)ammoBox.Location, onUnitSphere, DamageType.Overheat);
                                 ChassisLocations dependentLocation = MechStructureRules.GetDependentLocation((ChassisLocations)ammoBox.Location);
                                 if (dependentLocation != ChassisLocations.None && !__instance.IsLocationDestroyed(dependentLocation))
                                 {
-                                    __instance.NukeStructureLocation(hitInfo, ammoBox.Location, dependentLocation, onUnitSphere, true);
+                                    __instance.NukeStructureLocation(hitInfo, ammoBox.Location, dependentLocation, onUnitSphere, DamageType.Overheat);
                                 }
 
                             }

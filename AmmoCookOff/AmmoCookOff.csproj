@@ -30,9 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>

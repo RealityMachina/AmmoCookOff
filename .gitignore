@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /AmmoCookOff.rar
+/AmmoCookOff/Assemblies/0Harmony.dll
