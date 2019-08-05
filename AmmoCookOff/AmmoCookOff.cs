@@ -79,7 +79,10 @@ namespace AmmoCookOff
                                 string text = string.Format("{0} EXPLOSION", ammoBox.Name);
                                 ammoBox.parent.Combat.MessageCenter.PublishMessage(new FloatieMessage(ammoBox.parent.GUID, ammoBox.parent.GUID, text, FloatieMessage.MessageNature.CriticalHit));
                                 //we make a fake hit info to apply the nuking
-                                WeaponHitInfo hitInfo = new WeaponHitInfo(stackID, -1, -1, -1, string.Empty, string.Empty, -1, null, null, null, null, null, null, null, AttackDirection.None, Vector2.zero, null);
+                                WeaponHitInfo hitInfo = new WeaponHitInfo(stackID, -1, -1, -1, string.Empty, string.Empty, -1, null, null, null, null, null, null, null, new AttackDirection[]
+                                {
+                                    AttackDirection.FromFront
+                                }, null, null, null);
                                 Vector3 onUnitSphere = UnityEngine.Random.onUnitSphere;
                                 __instance.NukeStructureLocation(hitInfo, ammoBox.Location, (ChassisLocations)ammoBox.Location, onUnitSphere, DamageType.Overheat);
                                 ChassisLocations dependentLocation = MechStructureRules.GetDependentLocation((ChassisLocations)ammoBox.Location);
